@@ -1,0 +1,17 @@
+name: kolade-bank-web
+services:
+  web:
+    image: node:20
+    container_name: kolade_bank_web
+    working_dir: /app
+    ports:
+      - "5173:5173"                 
+    env_file:
+      - ./.env.docker
+    volumes:
+      - ./:/app                      
+    command: >
+      sh -lc "
+        npm i &&
+        npm run dev -- --host 0.0.0.0
+      "
