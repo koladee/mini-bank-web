@@ -1,78 +1,116 @@
-<<<<<<< HEAD
-# mini-bank-web
-Mini Bank Web App
-=======
-# React + TypeScript + Vite
+# Mini Bank Web (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **React + Vite + TailwindCSS** frontend for the Mini Bank
+platform.\
+It provides a simple, functional interface for users to register, log
+in, view balances, and perform transactions.
 
-Currently, two official plugins are available:
+------------------------------------------------------------------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+-   User Registration & Login (with validation)
+-   Dashboard with balance display
+-   Transfer funds between users
+-   Currency Exchange with live FX preview
+-   Transaction history with debit/credit distinction
+-   Error and loading states (ErrorBanner, Loading components)
+-   Receipt modal for transaction details
+-   Fully styled with **TailwindCSS** (primary color `#4287f5`)
+-   State managed via React Context API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+------------------------------------------------------------------------
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Ensure you have the following installed on your system:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-   [Node.js 18+](https://nodejs.org/)
+-   [npm](https://docs.npmjs.com/cli/v8/configuring-npm/install)
+-   A running backend API (`mini-bank-api`) accessible from the frontend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+------------------------------------------------------------------------
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Getting Started
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Clone the repository**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    ``` bash
+    git clone https://github.com/koladee/mini-bank-web.git
+    cd mini-bank-web
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
->>>>>>> 6aa09a4 (Initial commit)
+2.  **Install dependencies**
+
+    ``` bash
+    npm install
+    ```
+
+3.  **Environment setup**
+
+    Copy `.env.example` to `.env.local` and set the required variables:
+
+    ``` env
+    VITE_API_BASE_URL=http://localhost:3000
+    VITE_API_KEY=your_api_key_here
+    ```
+
+4.  **Run the development server**
+
+    ``` bash
+    npm run dev
+    ```
+
+    The app will be available at <http://localhost:5173>.
+
+------------------------------------------------------------------------
+
+## Docker Setup (Optional)
+
+You can also run the frontend inside Docker.
+
+1.  Ensure you have **Docker Desktop** installed and running.
+
+2.  Build and run the container:
+
+    ``` bash
+    docker compose up --build
+    ```
+
+3.  The frontend will be available at <http://localhost:5173>.
+
+------------------------------------------------------------------------
+
+## Project Structure
+
+    src/
+     ├── api/               # API client & endpoints
+     ├── components/        # UI components (Navbar, Forms, Tables, etc.)
+     ├── context/           # Context providers (Auth, Accounts, Transactions, Meta)
+     ├── pages/             # Page components (Login, Register, Dashboard, etc.)
+     ├── router.tsx         # Routing setup
+     ├── types.ts           # Shared TypeScript types
+     └── main.tsx           # App entry point
+
+------------------------------------------------------------------------
+
+## Scripts
+
+-   `npm run dev` - Start development server
+-   `npm run build` - Build for production
+-   `npm run preview` - Preview the production build locally
+
+------------------------------------------------------------------------
+
+## Known Issues / Improvements
+
+-   Currently, only USD ↔ EUR exchange supported.
+-   Real-time updates could be improved with WebSockets.
+-   UI can be further polished with animations and better
+    responsiveness.
+
+------------------------------------------------------------------------
+
+## License
+
+MIT License.
